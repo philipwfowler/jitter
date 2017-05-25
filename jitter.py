@@ -7,8 +7,8 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--y_step",default=0.2,help="the name of the gene")
-    parser.add_argument("--x_step",default=0.2,help="the 3-letter name of the drug")
+    parser.add_argument("--y_step",default=0.2,type=float,help="the name of the gene")
+    parser.add_argument("--x_step",default=0.2,type=float,help="the 3-letter name of the drug")
     parser.add_argument("--x_centre",default=0.0,help="the x-coordinate to jitter around")
     parser.add_argument("--filename",required=True,help="the name of the space-delimited textfile containing the y-values in a specified column")
     parser.add_argument("--column",type=int,default=0,help="the number of the column to read in (0-based)")
