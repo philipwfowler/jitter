@@ -66,4 +66,4 @@ if __name__ == "__main__":
 
     # write the list of (jittered) x and y values to STDOUT
     for i in range(len(values)):
-        print "%6.1f %7.3e" % (x[i],values[i])
+        print("%6.1f %7.3e" % (x[i],values[i]))
