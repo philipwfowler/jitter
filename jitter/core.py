@@ -2,18 +2,18 @@
 
 import pandas,numpy
 
-def jitter_data(filename,sep="\t",x_step=0.5,y_step=0.5,columns=[0,1],x_centre=0):
+def jitter_data(input_file,sep="\t",x_step=0.5,y_step=0.5,columns=[0,1],x_centre=0,output_file="jittered.dat"):
     '''
     jitters data
     '''
 
     # read in the plain text data file as a pandas dataframe
-    df=pandas.read_csv(filename,sep="\t",names=["label","y"],usecols=columns)
+    df=pandas.read_csv(input_file,sep="\t",names=["label","y"],usecols=columns)
 
-    # assuming it has a fileextension
-    tmp=filename.split('.')
-    file_stem=tmp[:-1][0]
-    file_ending=tmp[-1]
+    # # assuming it has a fileextension
+    # tmp=input_file.split('.')
+    # file_stem=tmp[:-1][0]
+    # file_ending=tmp[-1]
 
     # sort the dataset in descending order
     df.sort_values(by=['y'],ascending=False,inplace=True)
@@ -57,5 +57,9 @@ def jitter_data(filename,sep="\t",x_step=0.5,y_step=0.5,columns=[0,1],x_centre=0
 
             df.loc[points_in_range,'x']=(c*x_step)+x_centre
 
+        else:
+
+            df.loc[points_in_range,'x']=x_centre
+
     # finally save it all to disc
-    df.to_csv(file_stem+"-jittered."+file_ending,header=False,index=False,sep=sep)
+    df.to_csv(output_file,header=False,index=False,sep=sep)
